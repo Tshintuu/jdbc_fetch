@@ -25,8 +25,8 @@ import com.wildcodeschool.wizards.repositories.SchoolRepository;
 @ResponseBody
 public class SchoolController {
     private final static String DB_URL = "jdbc:mysql://localhost:3306/wild_db_quest?serverTimezone=GMT";
-    private final static String DB_USER = "admin";
-    private final static String DB_PASSWORD = "zpPDR9AA@";
+    private final static String DB_USER = "*****";
+    private final static String DB_PASSWORD = "******";
 
     @GetMapping("api/school")
     public List<School> getSchools(@RequestParam(defaultValue="%") String country){
