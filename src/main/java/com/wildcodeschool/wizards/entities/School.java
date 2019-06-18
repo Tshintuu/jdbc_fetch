@@ -3,10 +3,10 @@ package com.wildcodeschool.wizards.entities;
 public class School {
     private int id;
     private String name;
-    private int capacity;
+    private Integer capacity;
     private String country;
 
-    public School(int id, String name, int capacity, String country) {
+    public School(int id, String name, Integer capacity, String country) {
         this.id = id;
         this.name = name;
         this.capacity = capacity;
@@ -21,7 +21,7 @@ public class School {
         return this.name;
     }
 
-    public int getCapacity() {
+    public Integer getCapacity() {
         return this.capacity;
     }
 
