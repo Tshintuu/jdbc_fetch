@@ -2,6 +2,7 @@ package com.wildcodeschool.wizards.controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,7 +29,7 @@ import com.wildcodeschool.wizards.repositories.SchoolRepository;
 public class SchoolController {
     private final static String DB_URL = "jdbc:mysql://localhost:3306/wild_db_quest?serverTimezone=GMT";
     private final static String DB_USER = "*****";
-    private final static String DB_PASSWORD = "******";
+    private final static String DB_PASSWORD = "*****";
 
     @GetMapping("api/school")
     public List<School> getSchools(@RequestParam(defaultValue="%") String country){
@@ -98,5 +99,12 @@ public class SchoolController {
             country != null ? country : school.getCountry()
         );
         return SchoolRepository.selectById(id);
+    }
+
+    @DeleteMapping("api/school/{id}")
+    public void delete(
+        @PathVariable int id
+    ) {
+        SchoolRepository.delete(id);
     }
 }

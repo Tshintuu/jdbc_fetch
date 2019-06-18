@@ -18,7 +18,7 @@ public class SchoolRepository {
 
     private final static String DB_URL = "jdbc:mysql://localhost:3306/wild_db_quest?serverTimezone=GMT";
     private final static String DB_USER = "*****";
-    private final static String DB_PASSWORD = "******";
+    private final static String DB_PASSWORD = "*****";
 
 
     public static School selectById(int id) {
@@ -121,6 +121,27 @@ public class SchoolRepository {
 
             return statement.executeUpdate();
         }
+        catch (SQLException e) {
+            throw new ResponseStatusException(
+                HttpStatus.INTERNAL_SERVER_ERROR, "", e
+            );
+        }
+    }
+
+    public static int delete(int id) {
+        try(
+            Connection connection = DriverManager.getConnection(
+                DB_URL, DB_USER, DB_PASSWORD
+            );
+            PreparedStatement statement = connection.prepareStatement(
+                "DELETE FROM school WHERE id=?"
+            );
+        ) {
+            statement.setInt(1, id);
+
+            return statement.executeUpdate();
+        }
+
         catch (SQLException e) {
             throw new ResponseStatusException(
                 HttpStatus.INTERNAL_SERVER_ERROR, "", e
